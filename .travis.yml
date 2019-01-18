@@ -7,3 +7,13 @@ before_install:
 
 script:
   - docker run basurohan/docker-project yarn test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-project"
+  env: "DockerProject-env"
+  bucket_name: "elasticbeanstalk-us-east-2-211121879476"
+  bucket_path: "docker-project"
+  on:
+    branch: master
